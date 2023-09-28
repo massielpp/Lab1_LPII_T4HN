@@ -1,0 +1,78 @@
+package models;
+
+public class Empleado {
+	private int idEmpleado;
+	private String Apellidos;
+	private String Nombres;
+	private String Edad;
+	private String Sexo;
+	private String Salario;
+	
+	public Empleado(String apellidos, String nombres, String edad, String sexo, String salario) {
+		super();
+		Apellidos = apellidos;
+		Nombres = nombres;
+		Edad = edad;
+		Sexo = sexo;
+		Salario = salario;
+	}
+
+	public int getIdEmpleado() {
+		return idEmpleado;
+	}
+	
+	public void setIdEmpleado(int idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
+	
+	public String getApellidos() {
+		return Apellidos;
+	}
+	
+	public void setApellidos(String apellidos) {
+		this.Apellidos = apellidos;
+	}
+	
+	public String getNombres() {
+		return Nombres;
+	}
+	
+	public void setNombres(String nombres) {
+		this.Nombres = nombres;
+	}
+	
+	public String getEdad() {
+		return Edad;
+	}
+	
+	public void setEdad(String edad) {
+		this.Edad = edad;
+	}
+	
+	public String getSexo() {
+		return Sexo;
+	}
+	
+	public void setSexo(String sexo) {
+		this.Sexo = sexo;
+	}
+	
+	public String getSalario() {
+		return Salario;
+	}
+	
+	public void setSalario(String salario) {
+		this.Salario = salario;
+	}
+
+	@Override
+	public String toString() {
+		return "Empleado [idEmpleado=" + idEmpleado + ", Apellidos=" + Apellidos + ", Nombres=" + Nombres + ", Edad="
+				+ Edad + ", Sexo=" + Sexo + ", Salario=" + Salario + "]";
+	}
+	
+	
+	
+
+
+}

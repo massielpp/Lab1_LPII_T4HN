@@ -1,0 +1,92 @@
+package controllers;
+
+import java.math.BigDecimal;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
+import models.Empleado;
+
+public class EmpleadoController {
+	
+	public String createEmpleado(String Apellidos, String Nombres, String Edad, String Sexo, String Salario) {
+		
+		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Empleado.class).buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		
+		
+		public String crearEmpleado(String ape, String nom, int edad, String sexo,double d) {
+			try {
+				Empleado emp = new Empleado(ape,nom,edad,sexo,d);
+				
+				session.beginTransaction();
+				session.save(emp);
+				session.getTransaction().commit();
+				sessionFactory.close();
+				return "Empleado Creado";
+				
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "Error al Registrar Empleado";
+		}
+		
+		
+		public String BuscarEmpleado(int id) {
+			try {
+				session.beginTransaction();
+				Empleado emp = session.get(Empleado.class,id);
+				session.getTransaction().commit();
+				sessionFactory.close();
+				
+				if (emp != null) {
+		            return "Empleado encontrado.";
+		        } else {
+		            return "Empleado no encontrado.";
+		        }	
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			return "Error al buscar empleado";
+		}
+		
+		//ELIMINAR EMPLEADO
+		public String EliminarEmpleado(int idEmpleado) {
+			try {
+				
+				session.beginTransaction();
+				Empleado emp= session.get(Empleado.class,idEmpleado);
+				session.delete(emp);
+				session.getTransaction().commit();
+				sessionFactory.close();
+				return "Empleado eliminado Correctamente";
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			return "Error al Eliminar Empleado";
+		}
+		
+		//ACTUALIZAR EMPLEADO
+		public String ActualizarEmpleado(int idEmpleado,String nombre,String Apelldios) {
+			try {
+				session.beginTransaction();
+				Empleado emp= session.get(Empleado.class,idEmpleado);
+				emp.setNombres(nombre);
+				emp.setApellidos(Apelldios);
+				session.update(emp);
+				session.getTransaction().commit();
+				sessionFactory.close();
+				return "Empleado actualizado Correctamente";
+			}
+			catch(Exception ex) {
+				ex.printStackTrace();
+			}
+			return "Error al actualizar Empleado";
+		}
+		
+		
+	}
